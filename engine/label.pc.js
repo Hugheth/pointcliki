@@ -16,7 +16,9 @@
 		this.parent = null;
 		
 		this.text = text;
+		this.lines = text.split("\n");
 		this.size = size || 14;
+		this.lineHeight = this.size * 1.5;
 		this.color = color || '#000000'
 		
 		this.alpha = 1;
@@ -40,14 +42,16 @@
 			if (this.bounds[2] == Infinity) {
 				var dim = ctx.measureText(this.text);
 				this.bounds[2] = dim.width;
-				this.bounds[3] = this.size + 2;
-			}			
+				this.bounds[3] = this.lineHeight * this.lines.length + 2;
+			}
 		
-			ctx.fillText(
-				this.text,
-				this.x,
-				this.y
-			);
+			for (var i in this.lines) {
+				ctx.fillText(
+					this.lines[i],
+					this.x,
+					this.y + i * this.lineHeight
+				);
+			}
 		},
 		invalidateArea: function( x, y, width, height ) {
 			if (this.parent) this.parent.invalidateArea(x + this.x, y + this.y, width, height);
