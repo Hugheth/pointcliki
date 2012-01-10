@@ -50,6 +50,40 @@
 				data: data
 			});	
 		});
+		
+		this.groups = [];
+		
+		xml.find('objectgroup').each(function() {
+		
+			var item = $(this);
+			
+			var group = {
+			
+				name: item.attr('name'),
+				width: item.attr('width'),
+				height: item.attr('height'),
+				objects: []
+			};
+			
+			item.children('object').each(function() {
+			
+				var obj = $(this);
+			
+				var object = {
+					gid: obj.attr('gid'),
+					x: obj.attr('x'),
+					y: obj.attr('y')
+				};
+				
+				obj.children('properties').children('property').each(function() {
+					object[$(this).attr('name')] = $(this).attr('value');
+				});
+			
+				group.objects.push(object);
+			});
+			
+			t.groups.push(group);	
+		});
 	};
 	// Code based on code from the cocos2d javascript engine
 	// Thanks to Ryan Williams
