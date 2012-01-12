@@ -32,7 +32,7 @@
 	pc.Label.prototype = {
 		renderArea: function( ctx, x, y, width, height ) {
 		
-			ctx.setAlpha(this.alpha);
+			ctx.globalAlpha = this.alpha;
 			
 			ctx.font = this.size + 'px ' + this.font;
 			ctx.fillStyle = this.color;

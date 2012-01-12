@@ -41,7 +41,7 @@
 				return;
 			}
 			
-			ctx.setAlpha(this.alpha);
+			ctx.globalAlpha = this.alpha;
 			
 			ctx.save();
 			ctx.translate(rect[0], rect[1]);
