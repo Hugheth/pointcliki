@@ -1,0 +1,27 @@
+html, body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	background: #feb;
+	font-family: helvetica;
+}
+#wrapper {
+	text-align: center;
+	width: 900px;
+	min-height: 100%;
+	background: #fff;
+	border: 2px solid #ca5;
+	border-top: none;
+	border-bottom: none;
+	margin: 0 auto 0 auto;
+}
+h1 {
+	margin: 0;
+	padding: 20px;
+	color: #fff;
+	background: #08c;
+}
+.viewport {
+	position: relative;
+}
