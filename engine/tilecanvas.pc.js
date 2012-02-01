@@ -319,6 +319,14 @@
 					
 				this.dom.attr('height', y);
 			}
+		},
+		destroy: function() {
+			// Super
+			pc.Canvas.prototype.destroy.apply(this, []);
+			
+			this.buffer = null;
+			this.bctx = null;
+			this.texture = null;
 		}
 	};
 	pc.TileCanvas.prototype = $.extend({}, pc.Canvas.prototype, pc.TileCanvas.prototype);

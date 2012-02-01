@@ -11,9 +11,15 @@
 		this.width = xml.attr('width');
 		this.height = xml.attr('height');
 		
-		this.tilesets = [];
-		
 		var t = this;
+		
+		this.info = {};
+		
+		xml.children('properties').children('property').each(function() {
+			t.info[$(this).attr('name')] = $(this).attr('value');
+		});
+		
+		this.tilesets = [];
 		
 		xml.find('tileset').each(function() {
 		
@@ -43,7 +49,6 @@
 			}
 			
 			t.layers.push({
-			
 				name: layer.attr('name'),
 				width: layer.attr('width'),
 				height: layer.attr('height'),

@@ -52,8 +52,8 @@
 			// jump (e.g. computer put on sleep)
 			t.frameTime += t.durations[t.currentFrame];
 			
-			if (t.frameTime < t.clock)
-				t.frameTime = t.clockTime + t.durations[t.currentFrame];		
+			if (t.frameTime < clock.time)
+				t.frameTime = clock.time + t.durations[t.currentFrame];
 			
 			return true;
 		};
@@ -63,20 +63,20 @@
 		start: function() {
 			
 			if (!this.clock) {
-				console.log('No clock for animation [' + this.name + '] to use');
+				console.log('No clock for animation [' + this.id + '] to use');
 				return;
 			}
 			
 			this.frameTime = this.clock.time + this.durations[this.currentFrame];
 			
-			this.clock.addEvent(this.name + '.nextFrame', this.nextFrame);
+			this.clock.addEvent(this.id + '.nextFrame', this.nextFrame);
 			
 			this.playing = true;
 		},
 		stop: function() {
 			this.playing = false;
 			
-			this.clock.removeEvent(this.name + '.nextFrame');
+			this.clock.removeEvent(this.id + '.nextFrame');
 		},
 		change: function( u, v, cols, rows, durs, loop ) {
 			

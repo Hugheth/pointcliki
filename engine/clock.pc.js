@@ -38,7 +38,7 @@
 			// Get the new time
 			var cur = (new Date()).getTime();
 			var time = cur - t.beginTime + t.pausedTime;
-		
+			
 			// Check if enough time has passed since the last
 			// frame, namely over half the framerate
 			if (time - t.lastTime > t.dur / 2) {
@@ -60,7 +60,7 @@
 			var events = t.alwaysEvents;
 			
 			var keep = {};
-		
+			
 			// Ongoing events
 			for (var i in events) {
 			
@@ -118,12 +118,15 @@
 			this.paused = true;
 		},
 		reset: function() {
+		
+			if (!this.paused) this.stop();
+		
 			this.time = 0;
 			this.beginTime = 0;
+			this.lastTime = 0;
 			this.offsetTime = 0;
 			this.pausedTime = 0;
-			this.delayEvents = {};
-			this.alwaysEvents = {};
+			this.delayEvents = [];
 		},
 		setSpeed: function( speed ) {
 			clearInterval(this.interval);
@@ -163,7 +166,6 @@
 			 		break;
 			 	}
 			}
-			
 			if (!done) this.delayEvents.push(event);
 		},
 		addEvent: function( id, event ) {

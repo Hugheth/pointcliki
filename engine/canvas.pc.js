@@ -88,7 +88,8 @@
 		
 			if (this.container) delete this.container.canvases[this.id];
 			
-			container.canvases[this.id] = this;
+			if (container)
+				container.canvases[this.id] = this;
 			
 			this.container = container;
 		},
@@ -106,6 +107,15 @@
 		},
 		getTexture: function() {
 			return this.dom[0];
+		},
+		
+		destroy: function() {
+			this.event.unbind();
+			this.setClock(null);
+			this.setContainer(null);
+			if (this.viewport) this.viewport.removeCanvas(this);
+			this.ctx = null;
+			this.render = null;
 		}
 	};
 })();

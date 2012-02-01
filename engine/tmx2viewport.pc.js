@@ -25,7 +25,7 @@
 				tiles.valid = false;
 				
 			} else {
-				console.warn('Cannot load the texture file [' + tileset.file + '] for the tile canvas [' + tiles.id + ']');
+				console.warn('Cannot load the texture file [' + tileset.file + '] for the tile canvas [' + tmxMap.id + '.' + layer.name + ']');
 			}
 						
 			n++;

@@ -64,6 +64,11 @@
 		},
 		invalidateArea: function( x, y, width, height ) {
 			if (this.parent) this.parent.invalidateArea(x + this.x, y + this.y, width, height);
+		},
+		destroy: function() {
+			if (this.parent) this.parent.removeNode(this);
+			this.texture = null;
+			this.bounds = null;
 		}
 	};
 })();

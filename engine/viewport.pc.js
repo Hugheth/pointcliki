@@ -17,7 +17,8 @@
 
 		var t = this;
 		this.dom.click(function( e ) {
-			t.event.trigger('tap', { x: e.offsetX, y: e.offsetY });
+
+			t.event.trigger('tap', { x: e.pageX - t.dom.offset().left, y: e.pageY - t.dom.offset().top });
 		});
 		
 		this.canvases = {};
@@ -69,6 +70,11 @@
 				c.y = this.y;
 				c.valid = false;
 			}
+		},
+		
+		destroy: function() {
+			this.event.unbind();
+			this.dom.remove();
 		}
 	};
 })();
